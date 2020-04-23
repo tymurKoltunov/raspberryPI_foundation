@@ -43,9 +43,10 @@ class Character:
             print(self._name + " doesn't want to talk to you")
 
     # Fight with this character
-    def fight(self, combat_item):
+    def fight(self, combat_item=""):
         print(self._name + " doesn't want to fight with you")
         return True
+
 
 class Enemy(Character):
 
@@ -61,10 +62,34 @@ class Enemy(Character):
     def weakness(self, weakness):
         self._weakness = weakness
 
-    def fight(self, combat_item):
+    def fight(self, combat_item=""):
         if combat_item == self.weakness:
             print("You fend " + self.name + " off with the " + combat_item)
             return True
         else:
             print(self.name + " crushes you, puny adventurer")
             return False
+
+
+class Friend(Character):
+
+    def __init__(self, name, description):
+        super().__init__(name, description)
+        self._treat = None
+        self._possession = None
+
+    @property
+    def treat(self):
+        return self._treat
+
+    @property
+    def possession(self):
+        return self._possession
+
+    @treat.setter
+    def treat(self, treat):
+        self._treat = treat
+
+    @possession.setter
+    def possession(self, pos):
+        self._possession = pos
