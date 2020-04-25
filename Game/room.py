@@ -1,9 +1,11 @@
 class Room:
+    character = None
+    item = None
+
     def __init__(self, name="", description=""):
-        self._name = name
-        self._description = description
+        self.name = name
+        self.description = description
         self.linked_rooms = {}
-        self._character = None
 
     @property
     def name(self):
@@ -13,10 +15,6 @@ class Room:
     def description(self):
         return self._description
 
-    @property
-    def character(self):
-        return self._character
-
     @name.setter
     def name(self, name):
         self._name = name
@@ -24,10 +22,6 @@ class Room:
     @description.setter
     def description(self, desc):
         self._description = desc
-
-    @character.setter
-    def character(self, char):
-        self._character = char
 
     def link_room(self, room_to_link, direction):
         self.linked_rooms[direction] = room_to_link
@@ -43,3 +37,40 @@ class Room:
         else:
             print("No way")
             return self
+
+    def inspect(self):
+        print("Looking around")
+
+
+class Kitchen(Room):
+    # item = Cheese()
+    def __init__(self):
+        super().__init__()
+        self.name = 'Kitchen'
+        self.description = "A dank and dirty room buzzing with flies."
+
+    def inspect(self):
+        print(
+            "Looks completely abandoned, except for the big piece of nice looking cheese on the table. Flies avoid it for some reason.")
+
+
+class DiningHall(Room):
+    # character = Dave()
+    def __init__(self):
+        super().__init__()
+        self.name = "Dining Hall"
+        self.description = "About twice as big as kitchen, with big table in the middle and some scattered chairs. looks completely abandoned."
+
+    def inspect(self):
+        print("Nothing of value can be found here. Only dust and damaged furniture")
+
+
+class Ballroom(Room):
+    # character = Elsa()
+    def __init__(self):
+        super().__init__()
+        self.name = "Ballroom"
+        self.description = "Big room with an even bigger window, which hasn't been washed for a long time, fills room  with grey light."
+
+    def inspect(self):
+        print("Looks like someone took everything out of this room")

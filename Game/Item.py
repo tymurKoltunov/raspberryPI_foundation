@@ -1,8 +1,8 @@
 class Item:
     def __init__(self, name="", description="", type=""):
-        self._name = name
-        self._description = description
-        self._type = type
+        self.name = name
+        self.description = description
+        self.type = type
         self.stats = {}
 
     @property

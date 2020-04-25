@@ -2,9 +2,9 @@ class Character:
 
     # Create a character
     def __init__(self, name, description):
-        self._name = name
-        self._description = description
-        self._conversation = None
+        self.name = name
+        self.description = description
+        self.conversation = None
 
     @property
     def name(self):
