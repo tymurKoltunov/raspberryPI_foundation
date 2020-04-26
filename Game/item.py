@@ -33,3 +33,28 @@ class Item:
         print(self.description)
         for k, v in self.stats.items():
             print(k, v)
+
+class Cheese(Item):
+    def __init__(self):
+        super().__init__()
+        self.name = 'Cheese'
+        self.description = 'Big and smelly piece of cheese'
+        self.type = 'Food'
+        self.stats['usage'] = 'Can be used as weapon'
+
+
+class Tiara(Item):
+    def __init__(self):
+        super().__init__()
+        self.name = 'Tiara'
+        self.description = 'Silver tiara with glowing gemstome in the center of it'
+        self.type = 'Accessory'
+        self.stats['usage'] = 'Grants night vision'
+
+
+class Candy(Item):
+    def __init__(self):
+        super().__init__()
+        self.name = 'Candy'
+        self.type = 'Food'
+        self.stats['usage'] = 'Liked by kids'

@@ -1,17 +1,10 @@
-from room import Room
-from character import Enemy, Friend
-from setup import createRooms
+from room import *
+from character import *
+from setup import *
 
 rooms = createRooms()
+rooms = createChars(rooms)
 
-dave = Enemy("Dave", "A smelly zombie")
-dave.conversation = "Brrlgrh... rgrhl... brains..."
-dave.weakness = "cheese"
-dining_hall.character = dave
-
-elsa = Friend("Elsa", "Little girl")
-elsa.conversation = "What are you doing here?"
-ballroom.character = elsa
 current_room = rooms['kitchen']
 while True:
     print("\n")
@@ -25,6 +18,8 @@ while True:
         current_room = current_room.move(command)
     elif command == "talk":
         current_room.character.talk()
+    elif command == "inspect":
+        current_room.inspect()
     elif command == "fight":
         print("What will you use as a weapon?")
         if not current_room.character.fight(input("I choose: ")):

@@ -1,7 +1,10 @@
+from item import *
+
+
 class Character:
 
     # Create a character
-    def __init__(self, name, description):
+    def __init__(self, name='', description=''):
         self.name = name
         self.description = description
         self.conversation = None
@@ -50,8 +53,8 @@ class Character:
 
 class Enemy(Character):
 
-    def __init__(self, name, description):
-        super().__init__(name, description)
+    def __init__(self):
+        super().__init__()
         self._weakness = None
 
     @property
@@ -73,8 +76,8 @@ class Enemy(Character):
 
 class Friend(Character):
 
-    def __init__(self, name, description):
-        super().__init__(name, description)
+    def __init__(self):
+        super().__init__()
         self._treat = None
         self._possession = None
 
@@ -93,3 +96,20 @@ class Friend(Character):
     @possession.setter
     def possession(self, pos):
         self._possession = pos
+
+class Dave(Enemy):
+    def __init__(self):
+        super().__init__()
+        self.name = "Dave"
+        self.description = "A smelly zombie"
+        self.weakness = Cheese()
+        self.conversation = 'BRRRRRAAAAINS'
+
+class Elsa(Friend):
+    def __init__(self):
+        super().__init__()
+        self.name = "Elsa"
+        self.description = "Little girl"
+        self.possession = Tiara()
+        self.treat = Candy()
+        self.conversation = "What are you doing here?"
