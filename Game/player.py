@@ -33,7 +33,6 @@ class Player:
         else:
             print("No way")
 
-
     def take(self):
         self.backpack[self.location.item.name] = self.location.item
         self.location.item = None

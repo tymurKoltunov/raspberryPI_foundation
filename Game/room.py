@@ -49,7 +49,7 @@ class Kitchen(Room):
 
     def inspect(self):
         print(
-            "Looks completely abandoned, except for the big piece of nice looking cheese on the table. Flies avoid it for some reason.")
+            "Looks completely abandoned, except for the big piece of nice looking Cheese on the table. Flies avoid it for some reason.")
 
 
 class DiningHall(Room):

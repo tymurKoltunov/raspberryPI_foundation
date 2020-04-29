@@ -4,7 +4,7 @@ def inspect(): return 'player inspects the room he currently in'
 
 def talk(): return 'player talks to the character who is in same room as the player '
 
-def fight(): return 'player fights character who is in the same room as player'
+def fight(): return  'player fights character who is in the same room as player'
 
 def indirect(command):
     switcher = {
@@ -14,9 +14,10 @@ def indirect(command):
         'east' : move,
         'inspect': inspect,
         'talk': talk,
-        'fight': fight,
+        'fight': fight
     }
-    func = switcher.get(command, lambda: 'Invalid')
+    func = switcher.get(command, 'Invalid')
+
     return func()
 
-indirect('talk')
+print(indirect('kj'))
