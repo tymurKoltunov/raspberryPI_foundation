@@ -1,3 +1,7 @@
+from item import *
+from character import *
+
+
 class Room:
     character = None
     item = None
@@ -31,19 +35,13 @@ class Room:
         for direction in self.linked_rooms:
             print("The " + self.linked_rooms[direction].name + " is " + direction)
 
-    def move(self, direction):
-        if direction in self.linked_rooms:
-            return self.linked_rooms[direction]
-        else:
-            print("No way")
-            return self
-
     def inspect(self):
         print("Looking around")
 
 
 class Kitchen(Room):
-    # item = Cheese()
+    item = Cheese()
+
     def __init__(self):
         super().__init__()
         self.name = 'Kitchen'
@@ -55,7 +53,8 @@ class Kitchen(Room):
 
 
 class DiningHall(Room):
-    # character = Dave()
+    character = Dave()
+
     def __init__(self):
         super().__init__()
         self.name = "Dining Hall"
@@ -66,7 +65,7 @@ class DiningHall(Room):
 
 
 class Ballroom(Room):
-    # character = Elsa()
+    character = Elsa()
     def __init__(self):
         super().__init__()
         self.name = "Ballroom"

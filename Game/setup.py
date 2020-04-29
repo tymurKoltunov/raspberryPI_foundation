@@ -1,8 +1,7 @@
 from room import *
-from character import *
 
 
-def createRooms():
+def create_rooms():
     rooms = {}
     kitchen = Kitchen()
     dining_hall = DiningHall()
@@ -16,12 +15,5 @@ def createRooms():
     rooms['ballroom'] = ballroom
     return rooms
 
-
-def createChars(rooms):
-    dave = Dave()
-    elsa = Elsa()
-    rooms['dining_hall'].character = dave
-    rooms['ballroom'].character = elsa
-    return rooms
 
 
