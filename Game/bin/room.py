@@ -1,5 +1,5 @@
-from item import *
-from character import *
+from .item import *
+from .character import *
 
 
 class Room:

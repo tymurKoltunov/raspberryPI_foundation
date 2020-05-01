@@ -34,9 +34,16 @@ class Player:
             print("No way")
 
     def take(self):
-        self.backpack[self.location.item.name] = self.location.item
-        self.location.item = None
+        if self.location.item:
+            self.backpack[self.location.item.name] = self.location.item
+            self.location.item = None
+            print("You took " + self.location.item.name + ". And put it in your backpack.")
+        else:
+            print("There is nothing to take.")
 
     def check_backpack(self):
-        for item in self.backpack:
-            print(self.backpack[item].name + " " + self.backpack[item].description + "\n")
+        if self.backpack:
+            for item in self.backpack:
+                print(self.backpack[item].name + " " + self.backpack[item].description + "\n")
+        else:
+            print("You have nothing in your backpack.")

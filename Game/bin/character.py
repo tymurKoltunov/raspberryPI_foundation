@@ -1,4 +1,4 @@
-from item import *
+from .item import *
 
 
 class Character:
