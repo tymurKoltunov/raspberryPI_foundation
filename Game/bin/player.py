@@ -21,29 +21,36 @@ class Player:
         self._location = location
 
     def talk(self):
-        self.location.character.talk()
+        if self.location.character:
+            return self.location.character.talk()
+        else:
+            return "There is no one to talk to."
 
     def fight(self, weapon):
-        self.location.character.fight(weapon)
+        fight_result = self.location.character.fight(weapon)
+        if "fend" in fight_result:
+            self.location.character = None
+        return fight_result
 
     def move(self, direction):
         if direction in self.location.linked_rooms:
             self.location = self.location.linked_rooms[direction]
-
+            return f"You have moved {direction}."
         else:
-            print("No way")
+            return "No way"
 
     def take(self):
         if self.location.item:
             self.backpack[self.location.item.name] = self.location.item
+            item_name = self.location.item.name
             self.location.item = None
-            print("You took " + self.location.item.name + ". And put it in your backpack.")
+            return f"You took {item_name}. And put it in your backpack."
         else:
-            print("There is nothing to take.")
+            return "There is nothing to take."
 
     def check_backpack(self):
         if self.backpack:
             for item in self.backpack:
-                print(self.backpack[item].name + " " + self.backpack[item].description + "\n")
+                return self.backpack[item].name + " " + self.backpack[item].description + "\n"
         else:
-            print("You have nothing in your backpack.")
+            return "You have nothing in your backpack."

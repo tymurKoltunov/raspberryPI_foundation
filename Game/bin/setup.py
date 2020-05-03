@@ -1,4 +1,4 @@
-from room import *
+from .room import *
 
 
 def create_rooms():

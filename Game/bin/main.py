@@ -1,18 +1,20 @@
-from room import *
-from character import *
-from setup import *
-from player import *
+from Game.bin.room import *
+from Game.bin.character import *
+from Game.bin.setup import *
+from Game.bin.player import *
 import inspect
 
 rooms = create_rooms()
 player = Player(rooms['kitchen'])
 
 def fight():
+    if player.location.character is None:
+        return "There is no one to fight here."
     weapon = input("What will you use as a weapon? \n")
     if weapon in player.backpack:
-        player.fight(weapon)
+        return f"{player.fight(player.backpack[weapon])}"
     else:
-        print("You don't have this.")
+        return "You don't have this."
 
 def indirect(command):
     switcher = {
@@ -26,19 +28,24 @@ def indirect(command):
         'take': player.take,
         'backpack': player.check_backpack
     }
-    func = switcher.get(command, lambda: print('Invalid'))
+    func = switcher.get(command, lambda: 'Invalid')
     return func
+
 
 while True:
     print("\n")
+
     player.location.get_details()
+
     if player.location.character is not None:
-        player.location.character.describe()
+        print( f"{player.location.character.describe()}")
     command = input("> ")
     action = indirect(command)
     if inspect.getfullargspec(action).args.__len__() > 1:
-        action(command)
+        print(action(command))
     else:
-        action()
-
+        result_of_action = action()
+        print(result_of_action)
+        if "crushes you, puny adventurer" in result_of_action:
+            break
 

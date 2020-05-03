@@ -35,20 +35,18 @@ class Character:
 
     # Describe this character
     def describe(self):
-        print(self._name + " is here!")
-        print(self._description)
+        return f"{self._name} is here! \n{self._description}"
 
     # Talk to this character
     def talk(self):
-        if self._conversation is not None:
-            print("[" + self._name + " says]: " + self._conversation)
+        if self._conversation:
+            return f"[ {self._name} says]: {self._conversation}"
         else:
-            print(self._name + " doesn't want to talk to you")
+            return f"({self._name} doesn't want to talk to you"
 
     # Fight with this character
-    def fight(self, combat_item=""):
-        print(self._name + " doesn't want to fight with you")
-        return True
+    def fight(self, weapon):
+        return f"{self._name} doesn't want to fight with you"
 
 
 class Enemy(Character):
@@ -65,13 +63,11 @@ class Enemy(Character):
     def weakness(self, weakness):
         self._weakness = weakness
 
-    def fight(self, combat_item=""):
-        if combat_item == self.weakness:
-            print("You fend " + self.name + " off with the " + combat_item)
-            return True
+    def fight(self, weapon):
+        if weapon.name == self.weakness.name:
+            return f"You fend {self.name} off with the  + {weapon}"
         else:
-            print(self.name + " crushes you, puny adventurer")
-            return False
+            return f"{self.name} crushes you, puny adventurer"
 
 
 class Friend(Character):

@@ -33,10 +33,10 @@ class Room:
     def get_details(self):
         print("The " + self.name + "\n" + "-" * 20)
         for direction in self.linked_rooms:
-            print("The " + self.linked_rooms[direction].name + " is " + direction)
+            print(f"The {self.linked_rooms[direction].name}  is {direction}")
 
     def inspect(self):
-        print("Looking around")
+        return "Looking around"
 
 
 class Kitchen(Room):
@@ -48,8 +48,7 @@ class Kitchen(Room):
         self.description = "A dank and dirty room buzzing with flies."
 
     def inspect(self):
-        print(
-            "Looks completely abandoned, except for the big piece of nice looking Cheese on the table. Flies avoid it for some reason.")
+        return "Looks completely abandoned, except for the big piece of nice looking Cheese on the table. Flies avoid it for some reason."
 
 
 class DiningHall(Room):
@@ -61,15 +60,16 @@ class DiningHall(Room):
         self.description = "About twice as big as kitchen, with big table in the middle and some scattered chairs. looks completely abandoned."
 
     def inspect(self):
-        print("Nothing of value can be found here. Only dust and damaged furniture")
+        return "Nothing of value can be found here. Only dust and damaged furniture"
 
 
 class Ballroom(Room):
     character = Elsa()
+
     def __init__(self):
         super().__init__()
         self.name = "Ballroom"
         self.description = "Big room with an even bigger window, which hasn't been washed for a long time, fills room  with grey light."
 
     def inspect(self):
-        print("Looks like someone took everything out of this room")
+        return "Looks like someone took everything out of this room"
