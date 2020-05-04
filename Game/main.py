@@ -1,11 +1,8 @@
-from Game.bin.room import *
-from Game.bin.character import *
-from Game.bin.setup import *
-from Game.bin.player import *
+import bin
 import inspect
 
-rooms = create_rooms()
-player = Player(rooms['kitchen'])
+rooms = bin.create_rooms()
+player = bin.Player(rooms['kitchen'])
 
 def fight():
     if player.location.character is None:
