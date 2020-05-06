@@ -31,11 +31,9 @@ def indirect(command):
 
 while True:
     print("\n")
-
     player.location.get_details()
-
     if player.location.character is not None:
-        print( f"{player.location.character.describe()}")
+        print(f"{player.location.character.describe()}")
     command = input("> ")
     action = indirect(command)
     if inspect.getfullargspec(action).args.__len__() > 1:

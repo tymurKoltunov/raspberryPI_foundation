@@ -1,5 +1,5 @@
 from .item import *
-
+from .data import *
 
 class Character:
 
@@ -40,7 +40,7 @@ class Character:
     # Talk to this character
     def talk(self):
         if self._conversation:
-            return f"[ {self._name} says]: {self._conversation}"
+            return f"[{self._name} says]: {self._conversation}"
         else:
             return f"({self._name} doesn't want to talk to you"
 
@@ -96,16 +96,16 @@ class Friend(Character):
 class Dave(Enemy):
     def __init__(self):
         super().__init__()
-        self.name = "Dave"
-        self.description = "A smelly zombie"
-        self.weakness = Cheese()
-        self.conversation = 'BRRRRRAAAAINS'
+        self.name = dave_name
+        self.description = dave_description
+        self.weakness = globals()[dave_weakness]()
+        self.conversation = dave_conversation
 
 class Elsa(Friend):
     def __init__(self):
         super().__init__()
-        self.name = "Elsa"
-        self.description = "Little girl"
-        self.possession = Tiara()
-        self.treat = Candy()
-        self.conversation = "What are you doing here?"
+        self.name = elsa_name
+        self.description = elsa_description
+        self.conversation = elsa_conversation
+        self.possession = globals()[elsa_possession]()
+        self.treat = globals()[elsa_treat]()

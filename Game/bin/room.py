@@ -1,6 +1,6 @@
 from .item import *
 from .character import *
-
+from .data import *
 
 class Room:
     character = None
@@ -44,11 +44,11 @@ class Kitchen(Room):
 
     def __init__(self):
         super().__init__()
-        self.name = 'Kitchen'
-        self.description = "A dank and dirty room buzzing with flies."
+        self.name = kitchen_name
+        self.description = kitchen_description
 
     def inspect(self):
-        return "Looks completely abandoned, except for the big piece of nice looking Cheese on the table. Flies avoid it for some reason."
+        return kitchen_inspect
 
 
 class DiningHall(Room):
@@ -56,11 +56,11 @@ class DiningHall(Room):
 
     def __init__(self):
         super().__init__()
-        self.name = "Dining Hall"
-        self.description = "About twice as big as kitchen, with big table in the middle and some scattered chairs. looks completely abandoned."
+        self.name = dining_hall_name
+        self.description = dining_hall_description
 
     def inspect(self):
-        return "Nothing of value can be found here. Only dust and damaged furniture"
+        return dining_hall_inspect
 
 
 class Ballroom(Room):
@@ -68,8 +68,8 @@ class Ballroom(Room):
 
     def __init__(self):
         super().__init__()
-        self.name = "Ballroom"
-        self.description = "Big room with an even bigger window, which hasn't been washed for a long time, fills room  with grey light."
+        self.name = ballroom_name
+        self.description = ballroom_description
 
     def inspect(self):
-        return "Looks like someone took everything out of this room"
+        return ballroom_inspect
