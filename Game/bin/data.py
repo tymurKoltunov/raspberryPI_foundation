@@ -1,3 +1,5 @@
+#intro
+intro = "Welcome to THE Game. This is a simple adventure game where you can explore the ingame mansion, collect items, and use them to interact with characters. The goal is to get out of the strange place you woke up in. \nHow to play: \nGame is proceeding by you typing commands into command line. Commands available: \nMove to direction: 'south', 'north', 'west', 'east' \nTake an item from the room: 'take item_name' \nTalk to character: 'talk' \nFight a character: 'fight' \nInspect the room closely: 'inspect' \nCheck your backpak: 'backpack' \n"
 #rooms
 kitchen_name = "Kitchen"
 kitchen_description = "A dank and dirty room buzzing with flies."

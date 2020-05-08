@@ -1,10 +1,9 @@
-from Game.bin.room import *
-from Game.bin.character import *
-from Game.bin.setup import *
-from Game.bin.player import *
+from Game.bin import *
 
-def test_use_cheese_as_weapon():
+def test_cheese_as_weapon_on_dave():
     rooms = create_rooms()
     player = Player(rooms['dining_hall'])
     player.backpack["Cheese"] = Cheese()
     assert "fend" in player.fight(player.backpack["Cheese"])
+
+

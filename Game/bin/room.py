@@ -31,9 +31,9 @@ class Room:
         self.linked_rooms[direction] = room_to_link
 
     def get_details(self):
-        print("The " + self.name + "\n" + "-" * 20)
+        print("The " + self.name + "\n" + f"{self.description}"+ "\n" + "-" * 20)
         for direction in self.linked_rooms:
-            print(f"The {self.linked_rooms[direction].name}  is {direction}")
+            print(f"The {self.linked_rooms[direction].name} is {direction}")
 
     def inspect(self):
         return "Looking around"

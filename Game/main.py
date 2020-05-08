@@ -1,8 +1,8 @@
-import bin
+from Game.bin import *
 import inspect
 
-rooms = bin.create_rooms()
-player = bin.Player(rooms['kitchen'])
+rooms = create_rooms()
+player = Player(rooms['kitchen'])
 
 def fight():
     if player.location.character is None:
@@ -30,7 +30,7 @@ def indirect(command):
 
 
 while True:
-    print("\n")
+    print(intro)
     player.location.get_details()
     if player.location.character is not None:
         print(f"{player.location.character.describe()}")
