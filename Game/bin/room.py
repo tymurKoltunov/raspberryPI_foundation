@@ -31,7 +31,7 @@ class Room:
         self.linked_rooms[direction] = room_to_link
 
     def get_details(self):
-        print("The " + self.name + "\n" + f"{self.description}"+ "\n" + "-" * 20)
+        print("The " + self.name + "\n" + f"{self.description}" + "\n" + "-" * 20)
         for direction in self.linked_rooms:
             print(f"The {self.linked_rooms[direction].name} is {direction}")
 
@@ -52,7 +52,6 @@ class Kitchen(Room):
 
 
 class DiningHall(Room):
-    character = Dave()
 
     def __init__(self):
         super().__init__()
@@ -64,7 +63,6 @@ class DiningHall(Room):
 
 
 class Ballroom(Room):
-    character = Elsa()
 
     def __init__(self):
         super().__init__()

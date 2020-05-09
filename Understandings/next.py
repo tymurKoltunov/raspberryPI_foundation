@@ -5,5 +5,6 @@ def countdown():
         n -= 1
 
 c = countdown()
-print(c)
-print(next(c))
+print(f"{c} + '1'")
+print(f"{next(c)} + '2'")
+

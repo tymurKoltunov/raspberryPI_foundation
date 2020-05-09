@@ -1,13 +1,14 @@
 from .item import *
 from .data import *
 
+
 class Character:
 
     # Create a character
-    def __init__(self, name='', description=''):
+    def __init__(self, name='', description='', conversation=''):
         self.name = name
         self.description = description
-        self.conversation = None
+        self.conversation = conversation
 
     @property
     def name(self):
@@ -51,9 +52,9 @@ class Character:
 
 class Enemy(Character):
 
-    def __init__(self):
-        super().__init__()
-        self._weakness = None
+    def __init__(self, name='', description='', conversation='', weakness=''):
+        super().__init__(name, description, conversation)
+        self._weakness = weakness
 
     @property
     def weakness(self):
@@ -72,10 +73,10 @@ class Enemy(Character):
 
 class Friend(Character):
 
-    def __init__(self):
-        super().__init__()
-        self._treat = None
-        self._possession = None
+    def __init__(self, name='', description='', conversation='', treat='', possession=''):
+        super().__init__(name, description, conversation)
+        self._treat = treat
+        self._possession = possession
 
     @property
     def treat(self):
@@ -92,20 +93,3 @@ class Friend(Character):
     @possession.setter
     def possession(self, pos):
         self._possession = pos
-
-class Dave(Enemy):
-    def __init__(self):
-        super().__init__()
-        self.name = dave_name
-        self.description = dave_description
-        self.weakness = globals()[dave_weakness]()
-        self.conversation = dave_conversation
-
-class Elsa(Friend):
-    def __init__(self):
-        super().__init__()
-        self.name = elsa_name
-        self.description = elsa_description
-        self.conversation = elsa_conversation
-        self.possession = globals()[elsa_possession]()
-        self.treat = globals()[elsa_treat]()

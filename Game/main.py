@@ -1,12 +1,14 @@
 from Game.bin import *
 import inspect
 
-rooms = create_rooms()
-player = Player(rooms['kitchen'])
+room = create_rooms()
+player = Player(room)
 
 def fight():
     if player.location.character is None:
         return "There is no one to fight here."
+    if isinstance(player.location.character, Friend):
+        return player.fight('friend')
     weapon = input("What will you use as a weapon? \n")
     if weapon in player.backpack:
         return f"{player.fight(player.backpack[weapon])}"
@@ -28,9 +30,9 @@ def indirect(command):
     func = switcher.get(command, lambda: 'Invalid')
     return func
 
-
+print(intro)
 while True:
-    print(intro)
+
     player.location.get_details()
     if player.location.character is not None:
         print(f"{player.location.character.describe()}")
