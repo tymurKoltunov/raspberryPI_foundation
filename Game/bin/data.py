@@ -25,3 +25,19 @@ elsa_description = "Little girl"
 elsa_conversation = "What are you doing here?"
 elsa_possession = "Tiara"
 elsa_treat = "Candy"
+
+#items
+
+cheese_name = 'Cheese'
+cheese_description = 'Big and smelly piece of cheese. Can be used as weapon'
+cheese_usage = 'Restores one heart'
+cheese_charges = 1
+
+candy_name = 'Candy'
+candy_description = 'Liked by kids'
+candy_charges = 1
+candy_usage = 'Restores half a heart'
+
+tiara_name = 'Tiara'
+tiara_description = 'Silver tiara with glowing gemstome in the center of it'
+tiara_usage = 'Grants night vision'
