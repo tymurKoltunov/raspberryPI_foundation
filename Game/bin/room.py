@@ -40,8 +40,6 @@ class Room:
 
 
 class Kitchen(Room):
-    item = Cheese()
-
     def __init__(self):
         super().__init__()
         self.name = kitchen_name

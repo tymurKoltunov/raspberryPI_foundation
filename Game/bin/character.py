@@ -65,7 +65,7 @@ class Enemy(Character):
         self._weakness = weakness
 
     def fight(self, weapon):
-        if weapon.name == self.weakness.name:
+        if weapon.name == self.weakness:
             return f"You fend {self.name} off with the {weapon.name}"
         else:
             return f"{self.name} crushes you, puny adventurer"

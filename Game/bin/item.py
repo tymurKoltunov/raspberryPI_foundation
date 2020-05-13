@@ -1,5 +1,5 @@
 class Item:
-    def __init__(self, name="", description=""):
+    def __init__(self, name, description):
         self.name = name
         self.description = description
         self.type = None
@@ -37,10 +37,13 @@ class Item:
     def description(self, desc):
         self._description = desc
 
+    def inspect_item(self):
+        return self.usage
+
 
 class Food(Item):
-    def __init__(self, charges, usage):
-        super().__init__()
+    def __init__(self, name, description, charges, usage):
+        super().__init__(name, description)
         self.type = Food
         self.charges = charges
         self.usage = usage
@@ -55,15 +58,15 @@ class Food(Item):
 
 
 class Accessory(Item):
-    def __init__(self, usage):
-        super().__init__()
+    def __init__(self, name, description, usage):
+        super().__init__(name, description)
         self.type = Accessory
         self.usage = usage
 
 
 class Weapon(Item):
-    def __init__(self, strength):
-        super().__init__()
+    def __init__(self, name, description, strength):
+        super().__init__(name, description)
         self.type = Weapon
         self.strength = strength
 
@@ -76,8 +79,31 @@ class Weapon(Item):
         self._strength = strength
 
 
-class Outfit(Item):
-    def __init__(self):
-        super().__init__()
-        self.type = Outfit
+class Head(Item):
+    def __init__(self, name, description):
+        super().__init__(name, description)
+        self.type = Head
 
+
+class Torso(Item):
+    def __init__(self, name, description):
+        super().__init__(name, description)
+        self.type = Torso
+
+
+class Hands(Item):
+    def __init__(self, name, description):
+        super().__init__(name, description)
+        self.type = Hands
+
+
+class Legs(Item):
+    def __init__(self, name, description):
+        super().__init__(name, description)
+        self.type = Legs
+
+
+class Feet(Item):
+    def __init__(self, name, description):
+        super().__init__(name, description)
+        self.type = Feet

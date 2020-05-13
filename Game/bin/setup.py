@@ -8,12 +8,17 @@ def create_rooms():
     dave = Enemy(dave_name,
                  dave_description,
                  dave_conversation,
-                 globals()[dave_weakness]())
+                 dave_weakness)
     elsa = Friend(elsa_name,
                   elsa_description,
                   elsa_conversation,
-                  globals()[elsa_possession](),
-                  globals()[elsa_treat]())
+                  elsa_possession,
+                  elsa_treat)
+    cheese = Food(cheese_name,
+                  cheese_description,
+                  cheese_charges,
+                  cheese_usage)
+    kitchen.item = cheese
     dining_hall.character = dave
     ballroom.character = elsa
     kitchen.link_room(dining_hall, "south")

@@ -23,9 +23,13 @@ def indirect(command):
         'east': player.move,
         'inspect': player.location.inspect,
         'talk': player.talk,
-        'fight': fight,
+        'fight': player.fight,
         'take': player.take,
-        'backpack': player.check_backpack
+        'backpack': player.check_backpack,
+        'equip': player.equip,
+        'check_equipped': None,
+        'inspect item': None
+
     }
     func = switcher.get(command, lambda: 'Invalid')
     return func
