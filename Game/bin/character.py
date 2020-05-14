@@ -51,6 +51,7 @@ class Character:
 
 
 class Enemy(Character):
+    strength = 0
 
     def __init__(self, name='', description='', conversation='', weakness=''):
         super().__init__(name, description, conversation)
@@ -75,8 +76,8 @@ class Friend(Character):
 
     def __init__(self, name='', description='', conversation='', treat='', possession=''):
         super().__init__(name, description, conversation)
-        self._treat = treat
-        self._possession = possession
+        self.treat = treat
+        self.possession = possession
 
     @property
     def treat(self):

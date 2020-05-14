@@ -2,7 +2,7 @@ from Game.bin import *
 
 def test_name_should_be_dininghall(ballroom):
     assert ballroom.name is ballroom_name, \
-        f"name of dining hall is not 'Dining Hall', it is {dining_hall.name}"
+        f"got {ballroom.name} \nexpected {ballroom_name}"
 
 def test_description_match(ballroom):
     assert ballroom.description is ballroom_description, \
