@@ -6,8 +6,5 @@ def test_name_should_be_kitchen(kitchen):
 def test_description_match(kitchen):
     assert kitchen.description == kitchen_description, f"got: {kitchen.description}\nexpected: {kitchen_description}"
 
-def test_room_item_is_cheese(kitchen):
-    assert isinstance(kitchen.item, type(Cheese())), "kitchen item is not of type 'Cheese'"
-
 def test_inspection_should_match(kitchen):
     assert kitchen.inspect() == kitchen_inspect, f"got: {kitchen.inspect()} \nexpected: {kitchen_inspect}"

@@ -5,6 +5,7 @@ from .data import *
 class Room:
     character = None
     item = None
+    exit = False
 
     def __init__(self, name="", description=""):
         self.name = name

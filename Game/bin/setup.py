@@ -1,7 +1,7 @@
 from .room import *
 
 
-def create_rooms():
+def create_rooms(room_name = 'kitchen'):
     kitchen = Kitchen()
     dining_hall = DiningHall()
     ballroom = Ballroom()
@@ -25,7 +25,8 @@ def create_rooms():
     dining_hall.link_room(kitchen, "north")
     dining_hall.link_room(ballroom, "west")
     ballroom.link_room(dining_hall, "east")
-    return kitchen
+    ballroom.exit = True
+    return locals()[room_name]
 
 
 

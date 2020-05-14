@@ -2,6 +2,8 @@ from .character import *
 
 
 class Player:
+    hearts = 3
+
     def __init__(self, current_pos, name='defalut'):
         self.name = name
         self.location = current_pos
@@ -43,7 +45,7 @@ class Player:
             return self.location.characer.fight('friend')
         weapon = input("What will you use as a weapon? \n")
         if weapon in self.backpack:
-            fight_result = self.location.characer.fight(self.backpack[weapon])
+            fight_result = self.location.character.fight(self.backpack[weapon])
             if "fend" in fight_result:
                 self.location.character = None
             return fight_result
@@ -53,7 +55,7 @@ class Player:
     def move(self, direction):
         if direction in self.location.linked_rooms:
             self.location = self.location.linked_rooms[direction]
-            return f"You have moved {direction}."
+            return f"You have moved {direction}"
         else:
             return "No way"
 
@@ -69,7 +71,9 @@ class Player:
     def check_backpack(self):
         if self.backpack:
             for item in self.backpack:
-                return self.backpack[item].name + " " + self.backpack[item].description + "\n"
+                return self.backpack[item].name + "\n" + \
+                       self.backpack[item].description + "\n" + \
+                       self.backpack[item].usage + "\n"
         else:
             return "You have nothing in your backpack."
 
@@ -87,3 +91,5 @@ class Player:
         if item_class in self.equipped:
             self.equipped[item_class] = item
             return f"You have equipped {item.name} on {item_class} item slot"
+        else:
+            return "You can not equip this"

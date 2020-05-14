@@ -37,9 +37,6 @@ class Item:
     def description(self, desc):
         self._description = desc
 
-    def inspect_item(self):
-        return self.usage
-
 
 class Food(Item):
     def __init__(self, name, description, charges, usage):
@@ -77,8 +74,8 @@ class Weapon(Item):
     @strength.setter
     def strength(self, strength):
         self._strength = strength
-
-
+        
+        
 class Head(Item):
     def __init__(self, name, description):
         super().__init__(name, description)

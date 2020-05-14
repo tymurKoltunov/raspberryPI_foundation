@@ -1,11 +1,17 @@
 import pytest
-from Game.bin.room import *
-from Game.bin.player import *
+from Game.bin import *
 
-@pytest.fixture
+
+@pytest.fixture(scope="module")
 def kitchen():
-    return Kitchen()
+    return create_rooms()
 
-@pytest.fixture
-def player(position):
-    return Player(position)
+
+@pytest.fixture(scope="module")
+def dining_hall():
+    return create_rooms("dining_hall")
+
+
+@pytest.fixture(scope="module")
+def ballroom():
+    return create_rooms("ballroom")
