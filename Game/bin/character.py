@@ -1,6 +1,6 @@
 from .item import *
 from .data import *
-
+from random import choices
 
 class Character:
 
@@ -46,30 +46,47 @@ class Character:
             return f"({self._name} doesn't want to talk to you"
 
     # Fight with this character
-    def fight(self, weapon):
+    def fight(self, strength=0):
         return f"{self._name} doesn't want to fight with you"
 
 
 class Enemy(Character):
-    strength = 0
 
-    def __init__(self, name='', description='', conversation='', weakness=''):
+    def __init__(self, name='', description='', conversation='', weakness='', strength=0):
         super().__init__(name, description, conversation)
-        self._weakness = weakness
+        self.weakness = weakness
+        self.strength = strength
+
+    @property
+    def strength(self):
+        return self._strength
 
     @property
     def weakness(self):
         return self._weakness
 
+    @strength.setter
+    def strength(self, strength):
+        self._strength = strength
+
     @weakness.setter
     def weakness(self, weakness):
         self._weakness = weakness
 
-    def fight(self, weapon):
-        if weapon.name == self.weakness:
-            return f"You fend {self.name} off with the {weapon.name}"
-        else:
-            return f"{self.name} crushes you, puny adventurer"
+    def fight(self, strength=0):
+        health_lost = 0
+        result = [True, False]
+        difference = (strength - self.strength) * 5
+        win_chance = base_win_chance + difference
+        chances = [win_chance, 100-win_chance]
+        fight_sequence = choices(result, chances, k=10)
+        for success in fight_sequence:
+            if not success:
+                health_lost += one_hit_damage
+                if health_lost == 5:
+                    return health_lost
+            else:
+                return health_lost
 
 
 class Friend(Character):

@@ -35,7 +35,7 @@ while True:
     command = input("> ")
     action = indirect(command)
     if inspect.getfullargspec(action).args.__len__() > 1:
-        print(action(command))
+        print(action(command) + '\n')
     else:
         result_of_action = action()
         print(result_of_action)

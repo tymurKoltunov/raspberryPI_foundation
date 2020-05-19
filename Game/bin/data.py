@@ -49,3 +49,8 @@ tiara_description = 'Silver tiara with glowing gemstome in the center of it'
 tiara_usage = 'Grants night vision'
 
 nightshirt_name = 'Nightshirt'
+
+#fight
+
+base_win_chance = 25
+one_hit_damage = 0.5

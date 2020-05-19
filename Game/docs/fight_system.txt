@@ -1,0 +1,12 @@
+All weapons increase players strength in range 1-5.
+All enemies have strength in range 1-5.
+When fight is initiated value of player strength and enemy strength is compared.
+After comparison true or false value is returned.
+On true player defeats an enemy.
+On false player loses half of one heart.
+
+Comparison math:
+Base true chance is 25%. Unarmed(strength = 0).
+Enemy strength is subtracted from players strength.
+Each positive point of difference yields +5% to base chance.
+Each negative point of difference yields -5% to base chance.

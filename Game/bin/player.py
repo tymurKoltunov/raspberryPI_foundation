@@ -2,7 +2,8 @@ from .character import *
 
 
 class Player:
-    hearts = 3
+    health = 3
+    strength = 0
 
     def __init__(self, current_pos, name='defalut'):
         self.name = name
@@ -43,14 +44,19 @@ class Player:
             return "There is no one to fight here."
         if isinstance(self.location.character, Friend):
             return self.location.characer.fight('friend')
-        weapon = input("What will you use as a weapon? \n")
-        if weapon in self.backpack:
-            fight_result = self.location.character.fight(self.backpack[weapon])
-            if "fend" in fight_result:
-                self.location.character = None
-            return fight_result
+        health_lost = self.location.character.fight(Player.strength)
+        if health_lost >= Player.health:
+            return f"{self.location.character.name} crushes you, puny adventurer\n"
         else:
-            return "You don't have this."
+            Player.health -= health_lost
+            defeated_char_name = self.location.character.name
+            self.location.character = None
+            if self.equipped['Weapon'] is None:
+                return f"You killed {defeated_char_name} with Unarmed and lost" \
+                       f" {health_lost} health. Your current health is {Player.health}"
+            return f"You killed {defeated_char_name}" \
+                   f"with {self.equipped['Weapon'].name} and lost {health_lost} health. " \
+                   f"Your current health is {Player.health}"
 
     def move(self, direction):
         if direction in self.location.linked_rooms:
@@ -87,9 +93,13 @@ class Player:
         return equipped_str
 
     def equip(self, item):
-        item_class = item.__class__.__name__
-        if item_class in self.equipped:
-            self.equipped[item_class] = item
-            return f"You have equipped {item.name} on {item_class} item slot"
+
+        #What item do you want to equip?
+
+        if item.type in self.equipped:
+            self.equipped[item.type] = item
+            if item.type == "Weapon":
+                Player.strength = item.strength
+            return f"You have equipped {item.name} on {item.type} item slot"
         else:
             return "You can not equip this"

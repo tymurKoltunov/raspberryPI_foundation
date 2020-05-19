@@ -41,7 +41,7 @@ class Item:
 class Food(Item):
     def __init__(self, name, description, charges, usage):
         super().__init__(name, description)
-        self.type = Food
+        self.type = 'Food'
         self.charges = charges
         self.usage = usage
 
@@ -57,14 +57,14 @@ class Food(Item):
 class Accessory(Item):
     def __init__(self, name, description, usage):
         super().__init__(name, description)
-        self.type = Accessory
+        self.type = 'Accessory'
         self.usage = usage
 
 
 class Weapon(Item):
     def __init__(self, name, description, strength):
         super().__init__(name, description)
-        self.type = Weapon
+        self.type = 'Weapon'
         self.strength = strength
 
     @property
@@ -79,28 +79,28 @@ class Weapon(Item):
 class Head(Item):
     def __init__(self, name, description):
         super().__init__(name, description)
-        self.type = Head
+        self.type = 'Head'
 
 
 class Torso(Item):
     def __init__(self, name, description):
         super().__init__(name, description)
-        self.type = Torso
+        self.type = 'Torso'
 
 
 class Hands(Item):
     def __init__(self, name, description):
         super().__init__(name, description)
-        self.type = Hands
+        self.type = 'Hands'
 
 
 class Legs(Item):
     def __init__(self, name, description):
         super().__init__(name, description)
-        self.type = Legs
+        self.type = 'Legs'
 
 
 class Feet(Item):
     def __init__(self, name, description):
         super().__init__(name, description)
-        self.type = Feet
+        self.type = 'Feet'
