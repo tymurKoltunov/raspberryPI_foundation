@@ -111,8 +111,24 @@ class Player:
         if self.location.character.name:
             item = input(f"What do you want to give to {self.location.character.name}?\n>")
             if item in self.backpack:
-                item = self.backpack[item]
+                if self.location.character.give(item):
+                    if isinstance(self.location.character, Friend):
+                        self.backpack[self.location.character.possession.name] = \
+                            self.location.character.possession
+                        loot = self.location.character.possession.name
+                        self.location.character.treat = None
+                        self.location.character.possession = None
+                        return f"{self.location.character.name} accepted your gift, and gave you {loot}"
+                    if isinstance(self.location.character, Enemy):
+                        name = self.location.character.name
+                        self.location.character = None
+                        del self.backpack[item]
+                        return f"You fend off {name} with {item}"
+                    else:
+                        return f"It does not accept {item}"
+                else:
+                    return f"{self.location.character.name} does not like {item}"
+            else:
+                return "You don't have this"
         else:
-            return "There is no one to give to"
-
-        return
+            return "There is no one here"

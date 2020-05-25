@@ -59,7 +59,10 @@ class Character:
         return f"{self._name} doesn't want to fight with you"
 
     def give(self, item):
-        pass
+        if item is self.treat:
+            return True
+        else:
+            return False
 
 
 class Enemy(Character):
