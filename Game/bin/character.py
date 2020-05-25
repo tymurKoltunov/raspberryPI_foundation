@@ -5,10 +5,15 @@ from random import choices
 class Character:
 
     # Create a character
-    def __init__(self, name='', description='', conversation=''):
+    def __init__(self, name='', description='', conversation='', treat = ''):
         self.name = name
         self.description = description
         self.conversation = conversation
+        self.treat = treat
+
+    @property
+    def treat(self):
+        return self._treat
 
     @property
     def name(self):
@@ -34,6 +39,10 @@ class Character:
     def conversation(self, conv):
         self._conversation = conv
 
+    @treat.setter
+    def treat(self, treat):
+        self._treat = treat
+
     # Describe this character
     def describe(self):
         return f"{self._name} is here! \n{self._description}"
@@ -49,29 +58,23 @@ class Character:
     def fight(self, strength=0):
         return f"{self._name} doesn't want to fight with you"
 
+    def give(self, item):
+        pass
+
 
 class Enemy(Character):
 
-    def __init__(self, name='', description='', conversation='', weakness='', strength=0):
-        super().__init__(name, description, conversation)
-        self.weakness = weakness
+    def __init__(self, name='', description='', conversation='', treat='', strength=0):
+        super().__init__(name, description, conversation, treat)
         self.strength = strength
 
     @property
     def strength(self):
         return self._strength
 
-    @property
-    def weakness(self):
-        return self._weakness
-
     @strength.setter
     def strength(self, strength):
         self._strength = strength
-
-    @weakness.setter
-    def weakness(self, weakness):
-        self._weakness = weakness
 
     def fight(self, strength=0):
         health_lost = 0
@@ -92,21 +95,12 @@ class Enemy(Character):
 class Friend(Character):
 
     def __init__(self, name='', description='', conversation='', treat='', possession=''):
-        super().__init__(name, description, conversation)
-        self.treat = treat
+        super().__init__(name, description, conversation, treat)
         self.possession = possession
-
-    @property
-    def treat(self):
-        return self._treat
 
     @property
     def possession(self):
         return self._possession
-
-    @treat.setter
-    def treat(self, treat):
-        self._treat = treat
 
     @possession.setter
     def possession(self, pos):

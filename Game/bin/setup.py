@@ -19,11 +19,11 @@ def create_rooms(room_name = 'kitchen'):
     dave = Enemy(dave_name,
                  dave_description,
                  dave_conversation,
-                 locals()[dave_weakness.lower()])
+                 dave_treat)
     elsa = Friend(elsa_name,
                   elsa_description,
                   elsa_conversation,
-                  locals()[elsa_treat.lower()],
+                  elsa_treat,
                   locals()[elsa_possession.lower()])
     kitchen.item = cheese
     dining_hall.character = dave

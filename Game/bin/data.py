@@ -24,7 +24,7 @@ ballroom_inspect = "Looks like someone took everything out of this room"
 dave_name = "Dave"
 dave_description = "A smelly zombie"
 dave_conversation = "BRRRRRAAAAINS"
-dave_weakness = "Cheese"
+dave_treat = "Cheese"
 
 elsa_name = "Elsa"
 elsa_description = "Little girl"

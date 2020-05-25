@@ -92,10 +92,13 @@ class Player:
                 equipped_str += f"On {body_part} slot you have equipped {item}"
         return equipped_str
 
-    def equip(self, item):
+    def equip(self):
 
-        #What item do you want to equip?
-
+        item_name = input("What item do you want to equip?\n>")
+        if item_name in self.backpack:
+            item = self.backpack[item_name]
+        else:
+            return "You don't have this"
         if item.type in self.equipped:
             self.equipped[item.type] = item
             if item.type == "Weapon":
@@ -103,3 +106,13 @@ class Player:
             return f"You have equipped {item.name} on {item.type} item slot"
         else:
             return "You can not equip this"
+
+    def give(self):
+        if self.location.character.name:
+            item = input(f"What do you want to give to {self.location.character.name}?\n>")
+            if item in self.backpack:
+                item = self.backpack[item]
+        else:
+            return "There is no one to give to"
+
+        return
