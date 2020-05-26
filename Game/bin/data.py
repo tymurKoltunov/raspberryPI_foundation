@@ -10,14 +10,18 @@ ending = "Congratulations with getting out of this place. You are free now."
 kitchen_name = "Kitchen"
 kitchen_description = "A dank and dirty room buzzing with flies."
 kitchen_inspect = "Looks completely abandoned, except for the big piece of nice looking Cheese on the table. Flies avoid it for some reason."
+kitchen_item = "Cheese"
 
 dining_hall_name = "Dining Hall"
 dining_hall_description = "About twice as big as kitchen, with big table in the middle and some scattered chairs. looks completely abandoned."
 dining_hall_inspect = "Nothing of value can be found here. Only dust and damaged furniture"
+dining_hall_character = "Dave"
+dining_hall_item = "Candy"
 
 ballroom_name = "Ballroom"
 ballroom_description = "Big room with an even bigger window, which hasn't been washed for a long time, fills room  with grey light."
 ballroom_inspect = "Looks like someone took everything out of this room"
+ballroom_character = "Elsa"
 
 #characters
 

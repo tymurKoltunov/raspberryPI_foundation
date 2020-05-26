@@ -76,10 +76,12 @@ class Player:
 
     def check_backpack(self):
         if self.backpack:
+            list_of_items =""
             for item in self.backpack:
-                return self.backpack[item].name + "\n" + \
+                list_of_items += ">" + self.backpack[item].name + "\n" + \
                        self.backpack[item].description + "\n" + \
                        self.backpack[item].usage + "\n"
+            return list_of_items
         else:
             return "You have nothing in your backpack."
 
@@ -108,7 +110,7 @@ class Player:
             return "You can not equip this"
 
     def give(self):
-        if self.location.character.name:
+        if self.location.character:
             item = input(f"What do you want to give to {self.location.character.name}?\n>")
             if item in self.backpack:
                 if self.location.character.give(item):
@@ -118,6 +120,7 @@ class Player:
                         loot = self.location.character.possession.name
                         self.location.character.treat = None
                         self.location.character.possession = None
+                        del self.backpack[item]
                         return f"{self.location.character.name} accepted your gift, and gave you {loot}"
                     if isinstance(self.location.character, Enemy):
                         name = self.location.character.name

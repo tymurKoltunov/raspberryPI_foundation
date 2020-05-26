@@ -24,10 +24,11 @@ def create_rooms(room_name = 'kitchen'):
                   elsa_description,
                   elsa_conversation,
                   elsa_treat,
-                  locals()[elsa_possession.lower()])
-    kitchen.item = cheese
-    dining_hall.character = dave
-    ballroom.character = elsa
+                  locals()[elsa_possession.lower()] )
+    kitchen.item = locals()[kitchen_item.lower()]
+    dining_hall.character = locals()[dining_hall_character.lower()]
+    ballroom.character = locals()[ballroom_character.lower()]
+    dining_hall.item = locals()[dining_hall_item.lower()]
     kitchen.link_room(dining_hall, "south")
     dining_hall.link_room(kitchen, "north")
     dining_hall.link_room(ballroom, "west")

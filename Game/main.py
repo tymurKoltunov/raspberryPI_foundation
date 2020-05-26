@@ -15,7 +15,8 @@ def indirect(command):
         'backpack': player.check_backpack,
         'equip': player.equip,
         'equipped': player.check_equipped,
-        'exit': lambda: ending
+        'exit': lambda: ending,
+        'give': player.give
     }
     func = switcher.get(command, lambda: 'Invalid')
     return func
