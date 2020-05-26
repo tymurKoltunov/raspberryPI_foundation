@@ -135,3 +135,7 @@ class Player:
                 return "You don't have this"
         else:
             return "There is no one here"
+
+    def use(self):
+        #consume food for now, other possibilities to be discovered
+        pass
