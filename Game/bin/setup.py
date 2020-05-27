@@ -1,10 +1,7 @@
 from .room import *
 
 
-def create_rooms(room_name = 'kitchen'):
-    kitchen = Kitchen()
-    dining_hall = DiningHall()
-    ballroom = Ballroom()
+def create_rooms(room_name='kitchen'):
     cheese = Food(cheese_name,
                   cheese_description,
                   cheese_charges,
@@ -24,18 +21,23 @@ def create_rooms(room_name = 'kitchen'):
                   elsa_description,
                   elsa_conversation,
                   elsa_treat,
-                  locals()[elsa_possession.lower()] )
-    kitchen.item = locals()[kitchen_item.lower()]
-    dining_hall.character = locals()[dining_hall_character.lower()]
-    ballroom.character = locals()[ballroom_character.lower()]
-    dining_hall.item = locals()[dining_hall_item.lower()]
+                  locals()[elsa_possession.lower()])
+    kitchen = Room(kitchen_name,
+                   kitchen_description,
+                   kitchen_inspect,
+                   locals()[kitchen_item.lower()])
+    dining_hall = Room(name=dining_hall_name,
+                       description=dining_hall_description,
+                       inspect=dining_hall_inspect,
+                       character=locals()[dining_hall_character.lower()])
+    ballroom = Room(ballroom_name,
+                    ballroom_description,
+                    ballroom_inspect,
+                    locals()[dining_hall_item.lower()],
+                    locals()[ballroom_character.lower()])
     kitchen.link_room(dining_hall, "south")
     dining_hall.link_room(kitchen, "north")
     dining_hall.link_room(ballroom, "west")
     ballroom.link_room(dining_hall, "east")
     ballroom.exit = True
     return locals()[room_name]
-
-
-
-

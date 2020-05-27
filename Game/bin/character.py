@@ -2,10 +2,11 @@ from .item import *
 from .data import *
 from random import choices
 
+
 class Character:
 
     # Create a character
-    def __init__(self, name='', description='', conversation='', treat = ''):
+    def __init__(self, name: str, description: str, conversation: str, treat: str):
         self.name = name
         self.description = description
         self.conversation = conversation
@@ -67,7 +68,7 @@ class Character:
 
 class Enemy(Character):
 
-    def __init__(self, name='', description='', conversation='', treat='', strength=0):
+    def __init__(self, name: str, description: str, conversation: str, treat: str, strength: int):
         super().__init__(name, description, conversation, treat)
         self.strength = strength
 
@@ -97,7 +98,7 @@ class Enemy(Character):
 
 class Friend(Character):
 
-    def __init__(self, name='', description='', conversation='', treat='', possession=''):
+    def __init__(self, name: str, description: str, conversation: str, treat: str, possession=Item):
         super().__init__(name, description, conversation, treat)
         self.possession = possession
 

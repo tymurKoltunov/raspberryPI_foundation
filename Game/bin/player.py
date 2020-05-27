@@ -1,11 +1,12 @@
 from .character import *
+from .room import *
 
 
 class Player:
     health = 3
     strength = 0
 
-    def __init__(self, current_pos, name='defalut'):
+    def __init__(self, current_pos: Room, name='defalut'):
         self.name = name
         self.location = current_pos
         self.backpack = {}
@@ -58,7 +59,7 @@ class Player:
                    f"with {self.equipped['Weapon'].name} and lost {health_lost} health. " \
                    f"Your current health is {Player.health}"
 
-    def move(self, direction):
+    def move(self, direction: str):
         if direction in self.location.linked_rooms:
             self.location = self.location.linked_rooms[direction]
             return f"You have moved {direction}"
@@ -137,5 +138,5 @@ class Player:
             return "There is no one here"
 
     def use(self):
-        #consume food for now, other possibilities to be discovered
+        #TODO consume food for now, other possibilities to be discovered
         pass

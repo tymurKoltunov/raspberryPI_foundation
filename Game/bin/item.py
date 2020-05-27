@@ -1,5 +1,5 @@
 class Item:
-    def __init__(self, name, description):
+    def __init__(self, name: str, description: str):
         self.name = name
         self.description = description
         self.type = None
@@ -39,7 +39,7 @@ class Item:
 
 
 class Food(Item):
-    def __init__(self, name, description, charges, usage):
+    def __init__(self, name: str, description: str, charges: int, usage: str):
         super().__init__(name, description)
         self.type = 'Food'
         self.charges = charges
@@ -55,14 +55,14 @@ class Food(Item):
 
 
 class Accessory(Item):
-    def __init__(self, name, description, usage):
+    def __init__(self, name: str, description: str, usage: str):
         super().__init__(name, description)
         self.type = 'Accessory'
         self.usage = usage
 
 
 class Weapon(Item):
-    def __init__(self, name, description, strength):
+    def __init__(self, name: str, description: str, strength: int):
         super().__init__(name, description)
         self.type = 'Weapon'
         self.strength = strength
@@ -77,30 +77,30 @@ class Weapon(Item):
         
         
 class Head(Item):
-    def __init__(self, name, description):
+    def __init__(self, name: str, description: str):
         super().__init__(name, description)
         self.type = 'Head'
 
 
 class Torso(Item):
-    def __init__(self, name, description):
+    def __init__(self, name: str, description: str):
         super().__init__(name, description)
         self.type = 'Torso'
 
 
 class Hands(Item):
-    def __init__(self, name, description):
+    def __init__(self, name: str, description: str):
         super().__init__(name, description)
         self.type = 'Hands'
 
 
 class Legs(Item):
-    def __init__(self, name, description):
+    def __init__(self, name: str, description: str):
         super().__init__(name, description)
         self.type = 'Legs'
 
 
 class Feet(Item):
-    def __init__(self, name, description):
+    def __init__(self, name: str, description: str):
         super().__init__(name, description)
         self.type = 'Feet'
