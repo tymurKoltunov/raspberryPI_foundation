@@ -29,6 +29,7 @@ dave_name = "Dave"
 dave_description = "A smelly zombie"
 dave_conversation = "BRRRRRAAAAINS"
 dave_treat = "Cheese"
+dave_strength = 0
 
 elsa_name = "Elsa"
 elsa_description = "Little girl"
