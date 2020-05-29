@@ -3,11 +3,50 @@ from .room import *
 
 
 class Player:
-    health = 3
-    strength = 0
+    """
+    Player class that interacts with the world.
+
+    Attributes
+    ----------
+    name : str
+        name of the player
+    health : int
+        health of the player(default 3)
+    strength : int
+        strength of the player, influences result of a fight
+    location: Room
+        current room in which player is located
+    backpack : dict
+        dictionary which contains items that player picks up during game. Key is the name of the item and value is Item object
+    equipped : dict
+        dictionary which contains players equipped items. Key is body part(item type) value is Item object
+
+    Methods
+    -------
+    talk()
+        talks to character in current room
+    fight()
+        fights with a character in current room
+    move(direction : str)
+        changes current room to the one that in the direction string passed if the direction is correct and room there exists
+    take()
+        puts the item in current room to backpack and removes this item from room
+    check_backpack()
+        returns string with name, description and usage of each item in backpack dictionary
+    check_equipped()
+        returns string with name, description and usage of each item in equipped dictionary
+    equip()
+        adds item to equipped dictionary
+    give()
+        gives an item to character in current room
+    use()
+        uses an item
+    """
 
     def __init__(self, current_pos: Room, name='defalut'):
         self.name = name
+        self.health = 3
+        self.strength = 0
         self.location = current_pos
         self.backpack = {}
         self.equipped = {"Head": None,
@@ -19,12 +58,28 @@ class Player:
                          "Weapon": None}
 
     @property
+    def strength(self):
+        return self._strength
+
+    @property
+    def health(self):
+        return self._health
+
+    @property
     def location(self):
         return self._location
 
     @property
     def name(self):
         return self._name
+
+    @health.setter
+    def health(self, health):
+        self._health = health
+
+    @strength.setter
+    def strength(self, strength):
+        self._strength = strength
 
     @name.setter
     def name(self, name):
@@ -35,29 +90,47 @@ class Player:
         self._location = location
 
     def talk(self):
+        """
+        Returns talk string from character in current location
+        If no character in current location is found, "There is no one to talk to." string is returned
+        """
         if self.location.character:
             return self.location.character.talk()
         else:
             return "There is no one to talk to."
 
     def fight(self):
+        """
+
+
+        """
+        returned_string = "You killed {defeated_char_name}" \
+                          "with {Weapon} and lost {health_lost} health. " \
+                          "Your current health is {health_curr}"
         if self.location.character is None:
             return "There is no one to fight here."
         if isinstance(self.location.character, Friend):
             return self.location.characer.fight('friend')
-        health_lost = self.location.character.fight(Player.strength)
-        if health_lost >= Player.health:
+        health_lost = self.location.character.fight(self.strength)
+        if health_lost >= self.health:
             return f"{self.location.character.name} crushes you, puny adventurer\n"
         else:
-            Player.health -= health_lost
+            self.health -= health_lost
             defeated_char_name = self.location.character.name
+            if self.location.character.loot.name:
+                returned_string += f"You looted {self.location.character.loot.name} from {self.location.character.name}"
+                self.backpack[self.location.character.loot.name] = self.location.character.loot
+                self.location.character.loot = None
             self.location.character = None
             if self.equipped['Weapon'] is None:
-                return f"You killed {defeated_char_name} with Unarmed and lost" \
-                       f" {health_lost} health. Your current health is {Player.health}"
-            return f"You killed {defeated_char_name}" \
-                   f"with {self.equipped['Weapon'].name} and lost {health_lost} health. " \
-                   f"Your current health is {Player.health}"
+                return returned_string.format(defeated_char_name=defeated_char_name,
+                                              weapon="Unarmed",
+                                              health_lost=health_lost,
+                                              health_curr=self.health)
+            return returned_string.format(defeated_char_name=defeated_char_name,
+                                          weapon=self.equipped['Weapon'].name,
+                                          health_lost=health_lost,
+                                          health_curr=self.health)
 
     def move(self, direction: str):
         if direction in self.location.linked_rooms:
@@ -105,7 +178,7 @@ class Player:
         if item.type in self.equipped:
             self.equipped[item.type] = item
             if item.type == "Weapon":
-                Player.strength = item.strength
+                self.strength = item.strength
             return f"You have equipped {item.name} on {item.type} item slot"
         else:
             return "You can not equip this"

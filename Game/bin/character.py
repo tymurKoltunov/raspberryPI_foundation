@@ -68,9 +68,18 @@ class Character:
 
 class Enemy(Character):
 
-    def __init__(self, name: str, description: str, conversation: str, treat: str, strength: int):
+    def __init__(self, name: str, description: str, conversation: str, treat: str, strength: int, loot= Item):
         super().__init__(name, description, conversation, treat)
         self.strength = strength
+        self.loot = loot
+
+    @property
+    def loot(self):
+        return self._loot
+
+    @loot.setter
+    def loot(self, loot):
+        self._loot = loot
 
     @property
     def strength(self):
