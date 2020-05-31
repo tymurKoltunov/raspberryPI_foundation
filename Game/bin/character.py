@@ -5,7 +5,7 @@ from random import choices
 
 class Character:
     """
-    Character class represents all NPCs in the game
+    Super class for all NPCs in the game
 
     Attributes
     ----------
@@ -23,15 +23,15 @@ class Character:
     Methods
     -------
     describe()
-        returns formatted string "{self.name} is here! \n{self.description}"
+        describes NPC
     talk()
-        if self.conversation attribute is not empty returns formatted string "[{self.name} says]: {self.conversation}"
-        otherwise returns formatted string "({self.name} doesn't want to talk to you"
+        talks to the NPC
     fight(strength = 0)
-        returns formatted string "{self.name} doesn't want to fight with you"
+        fights with NPC
+        player can only fight enemies
     give(item)
-        returns True if passed string matches self.treat attribute
-        returns False otherwise
+        gives item to an NPc
+
     """
 
     # Create a character
@@ -75,10 +75,21 @@ class Character:
 
     # Describe this character
     def describe(self):
+        """
+        Description
+        -----------
+        returns formatted string "{self.name} is here! {self.description}"
+        """
         return f"{self.name} is here! \n{self.description}"
 
     # Talk to this character
     def talk(self):
+        """
+        Description
+        -----------
+        if self.conversation attribute is not empty returns formatted string "[{self.name} says]: {self.conversation}"\n
+        otherwise returns formatted string "({self.name} doesn't want to talk to you"
+        """
         if self._conversation:
             return f"[{self.name} says]: {self.conversation}"
         else:
@@ -86,9 +97,31 @@ class Character:
 
     # Fight with this character
     def fight(self, strength=0):
+        """
+        Parameter
+        ---------
+        strength : int
+            strength of the player
+
+        Description
+        ----------
+        returns formatted string "{self.name} doesn't want to fight with you"\n
+        it is overridden in enemy class
+        """
         return f"{self.name} doesn't want to fight with you"
 
     def give(self, item: str):
+        """
+        Parameter
+        ---------
+        item : str
+            name of the item player wants to give to NPC
+
+        Description
+        -----------
+        returns True if passed string matches self.treat attribute\n
+        returns False otherwise
+        """
         if item in self.treat:
             return True
         else:
@@ -96,7 +129,9 @@ class Character:
 
 
 class Enemy(Character):
-
+    """
+    Represents hostile NPCs in the game with which you can fight
+    """
     def __init__(self, name: str, description: str, strength: int, treat='', conversation='', loot=Item):
         super().__init__(name, description, conversation, treat)
         self.strength = strength
