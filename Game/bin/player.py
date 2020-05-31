@@ -244,12 +244,12 @@ class Player:
         """
         Description
         -----------
-        Asks user to input item name to be given
-        Checks if character exists in the current location
-        Returns "There is no one here" string otherwise
-        Checks if item name exists in backpack dictionary
-        Returns "You don't have this" string otherwise
-        Checks return value of give() method from character in current location
+        Asks user to input item name to be given.
+        Checks if character exists in the current location,
+        Returns "There is no one here" string if no character exists.
+        Checks if item name exists in backpack dictionary,
+        Returns "You don't have this" string if item is not found.
+        Checks return value of give() method from character in current location,
         If True, checks class of character object
             If Friend
                 Puts possession attribute value to backpack

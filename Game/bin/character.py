@@ -4,9 +4,38 @@ from random import choices
 
 
 class Character:
+    """
+    Character class represents all NPCs in the game
+
+    Attributes
+    ----------
+    name : str
+        name of the NPC
+    description : str
+        description of the NPC
+    conversation : str
+        what the NPC will say when talked to
+        (default is empty string)
+    treat : str
+        special item that player can give to NPC(fends off enemies, exchanges for another item with friend)
+        (default is empty string)
+
+    Methods
+    -------
+    describe()
+        returns formatted string "{self.name} is here! \n{self.description}"
+    talk()
+        if self.conversation attribute is not empty returns formatted string "[{self.name} says]: {self.conversation}"
+        otherwise returns formatted string "({self.name} doesn't want to talk to you"
+    fight(strength = 0)
+        returns formatted string "{self.name} doesn't want to fight with you"
+    give(item)
+        returns True if passed string matches self.treat attribute
+        returns False otherwise
+    """
 
     # Create a character
-    def __init__(self, name: str, description: str, conversation: str, treat: str):
+    def __init__(self, name: str, description: str, conversation='', treat=''):
         self.name = name
         self.description = description
         self.conversation = conversation
@@ -46,20 +75,20 @@ class Character:
 
     # Describe this character
     def describe(self):
-        return f"{self._name} is here! \n{self._description}"
+        return f"{self.name} is here! \n{self.description}"
 
     # Talk to this character
     def talk(self):
         if self._conversation:
-            return f"[{self._name} says]: {self._conversation}"
+            return f"[{self.name} says]: {self.conversation}"
         else:
-            return f"({self._name} doesn't want to talk to you"
+            return f"({self.name} doesn't want to talk to you"
 
     # Fight with this character
     def fight(self, strength=0):
-        return f"{self._name} doesn't want to fight with you"
+        return f"{self.name} doesn't want to fight with you"
 
-    def give(self, item):
+    def give(self, item: str):
         if item in self.treat:
             return True
         else:
@@ -68,7 +97,7 @@ class Character:
 
 class Enemy(Character):
 
-    def __init__(self, name: str, description: str, conversation: str, treat: str, strength: int, loot= Item):
+    def __init__(self, name: str, description: str, strength: int, treat='', conversation='', loot=Item):
         super().__init__(name, description, conversation, treat)
         self.strength = strength
         self.loot = loot
@@ -94,7 +123,7 @@ class Enemy(Character):
         result = [True, False]
         difference = (strength - self.strength) * 5
         win_chance = base_win_chance + difference
-        chances = [win_chance, 100-win_chance]
+        chances = [win_chance, 100 - win_chance]
         fight_sequence = choices(result, chances, k=10)
         for success in fight_sequence:
             if not success:
@@ -107,7 +136,7 @@ class Enemy(Character):
 
 class Friend(Character):
 
-    def __init__(self, name: str, description: str, conversation: str, treat: str, possession=Item):
+    def __init__(self, name: str, description: str, conversation='', treat='', possession=Item):
         super().__init__(name, description, conversation, treat)
         self.possession = possession
 
