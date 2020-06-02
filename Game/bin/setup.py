@@ -1,7 +1,20 @@
 from .room import *
 
 
-def create_rooms(room_name='kitchen'):
+def create_rooms(room_name=spawn_room):
+    """
+    Parameter
+    ---------
+    room_name: str
+        room name to be returned
+        (default is spawn_room which is defined in data.py)
+
+    Description
+    -----------
+    creates rooms, items, characters everything which constitutes game world\n
+    returns room object, name attribute of which matches room_name parameter\n
+    if passed parameter does not match any rooms that were created, then default is returned
+    """
     cheese = Food(cheese_name,
                   cheese_description,
                   cheese_charges,
@@ -40,4 +53,4 @@ def create_rooms(room_name='kitchen'):
     dining_hall.link_room(ballroom, "west")
     ballroom.link_room(dining_hall, "east")
     ballroom.exit = True
-    return locals()[room_name]
+    return locals()[room_name] if locals()[room_name] else locals()[spawn_room.lower()]

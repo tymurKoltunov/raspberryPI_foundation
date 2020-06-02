@@ -5,7 +5,7 @@ from .data import *
 
 class Room:
 
-    def __init__(self, name: str, description: str, inspect: str, item= Item, character=Character, exit=False):
+    def __init__(self, name: str, description: str, inspect: str, item=Item, character=Character, exit=False):
         self.name = name
         self.description = description
         self.linked_rooms = {}
@@ -64,4 +64,3 @@ class Room:
 
     def inspect(self):
         return self.inspect
-

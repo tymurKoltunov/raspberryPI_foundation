@@ -15,17 +15,17 @@ def indirect(command):
         'backpack': player.check_backpack,
         'equip': player.equip,
         'equipped': player.check_equipped,
-        'exit': lambda: ending,
+        'exit': lambda: ending_message,
         'give': player.give
     }
     func = switcher.get(command, lambda: 'Invalid')
     return func
 
 
-room = create_rooms()
-player = Player(room)
+start_room = create_rooms()
+player = Player(start_room)
 
-print(intro)
+print(intro_message)
 while True:
 
     player.location.get_details()

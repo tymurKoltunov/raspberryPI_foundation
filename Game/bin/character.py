@@ -26,9 +26,9 @@ class Character:
         describes NPC
     talk()
         talks to the NPC
-    fight(strength = 0)
+    fight(strength: int)
         fights with NPC
-        player can only fight enemies
+        (player can only fight enemies)
     give(item)
         gives item to an NPc
 
@@ -96,7 +96,7 @@ class Character:
             return f"({self.name} doesn't want to talk to you"
 
     # Fight with this character
-    def fight(self, strength=0):
+    def fight(self, strength: int):
         """
         Parameter
         ---------
@@ -130,7 +130,30 @@ class Character:
 
 class Enemy(Character):
     """
-    Represents hostile NPCs in the game with which you can fight
+    Represents hostile NPCs in the game with which player can fight
+    Subclass of Character class
+
+    Attributes
+    ----------
+    name : str
+        name of the NPC
+    description : str
+        description of the NPC
+    strength : int
+        strength of the NPC, number
+    loot : Item
+        item which will be looted by player, if player defeats this NPC in a fight
+    conversation : str
+        what the NPC will say when talked to
+        (default is empty string)
+    treat : str
+        special item that player can give to NPC(fends off enemies, exchanges for another item with friend)
+        (default is empty string)
+
+    Methods
+    -------
+    fight(strength: int)
+        fights with NPC
     """
     def __init__(self, name: str, description: str, strength: int, treat='', conversation='', loot=Item):
         super().__init__(name, description, conversation, treat)
@@ -153,7 +176,18 @@ class Enemy(Character):
     def strength(self, strength):
         self._strength = strength
 
-    def fight(self, strength=0):
+    def fight(self, strength: int):
+        """
+        Parameter
+        ---------
+        strength : int
+            strength of the player who fights a monster
+
+        Description
+        -----------
+        returns amount of lost health by the player\n
+        fight system described in /docs/fight_system.txt
+        """
         health_lost = 0
         result = [True, False]
         difference = (strength - self.strength) * 5
@@ -170,7 +204,25 @@ class Enemy(Character):
 
 
 class Friend(Character):
+    """
+    Represents friendly NPCs with which player can not fight
+    Subclass of Character class
 
+    Attributes
+    ----------
+    name : str
+        name of the NPC
+    description : str
+        description of the NPC
+    possession: Item
+        given to player if player gives treat to a NPC
+    conversation : str
+        what the NPC will say when talked to
+        (default is empty string)
+    treat : str
+        special item that player can give to NPC(fends off enemies, exchanges for another item with friend)
+        (default is empty string)
+    """
     def __init__(self, name: str, description: str, conversation='', treat='', possession=Item):
         super().__init__(name, description, conversation, treat)
         self.possession = possession
