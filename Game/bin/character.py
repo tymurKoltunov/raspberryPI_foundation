@@ -5,10 +5,14 @@ from random import choices
 
 class Character:
     """
+    Description
+    -----------
     Super class for all NPCs in the game
+    Sub classes are Friend, Enemy\n
 
-    Attributes
-    ----------
+    Instance variables
+    -----------------
+
     name : str
         name of the NPC
     description : str
@@ -20,8 +24,8 @@ class Character:
         special item that player can give to NPC(fends off enemies, exchanges for another item with friend)
         (default is empty string)
 
-    Methods
-    -------
+    Instance Methods
+    ---------------
     describe()
         describes NPC
     talk()
@@ -130,11 +134,14 @@ class Character:
 
 class Enemy(Character):
     """
+    Description
+    -----------
     Represents hostile NPCs in the game with which player can fight
-    Subclass of Character class
+    Subclass of Character class\n
 
-    Attributes
-    ----------
+    Instance variables
+    -----------------
+
     name : str
         name of the NPC
     description : str
@@ -150,8 +157,9 @@ class Enemy(Character):
         special item that player can give to NPC(fends off enemies, exchanges for another item with friend)
         (default is empty string)
 
-    Methods
-    -------
+    Instance methods
+    -----------------
+
     fight(strength: int)
         fights with NPC
     """
@@ -205,11 +213,13 @@ class Enemy(Character):
 
 class Friend(Character):
     """
+    Description
+    -----------
     Represents friendly NPCs with which player can not fight
     Subclass of Character class
 
-    Attributes
-    ----------
+    Instance variables
+    -----------------
     name : str
         name of the NPC
     description : str

@@ -47,12 +47,14 @@ elsa_treat = "Candy"
 cheese_name = 'Cheese'
 cheese_description = 'Big and smelly piece of cheese. Can be used as weapon'
 cheese_charges = 1
-cheese_usage = f'Restores one heart. Can be used {cheese_charges} times'
+cheese_heal = 1
+cheese_usage = f'Restores {cheese_heal} hearts. Can be used {cheese_charges} times'
 
 candy_name = 'Candy'
 candy_description = 'Liked by kids'
 candy_charges = 1
-candy_usage = f'Restores half a heart. Can be used {candy_charges} times'
+candy_heal = 0.5
+candy_usage = f'Restores {candy_heal}  hearts. Can be used {candy_charges} times'
 
 tiara_name = 'Tiara'
 tiara_description = 'Silver tiara with glowing gemstome in the center of it'

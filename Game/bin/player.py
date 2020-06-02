@@ -4,16 +4,19 @@ from .room import *
 
 class Player:
     """
+    Description
+    -----------
     Player class that interacts with the world.
 
-    Attributes
-    ----------
+    Instance variables
+    -----------------
     name : str
         name of the player
     health : int
         health of the player(default 3)
     strength : int
-        strength of the player, influences result of a fight
+        strength of the player, influences result of a fight\n
+        starts with 0
     location: Room
         current room in which player is located
     backpack : dict
@@ -21,8 +24,9 @@ class Player:
     equipped : dict
         dictionary which contains players equipped items. Key is body part(item type) value is Item object
 
-    Methods
-    -------
+    Instance methods
+    -----------------
+
     talk()
         talks to character in current room
     fight()
@@ -91,6 +95,8 @@ class Player:
 
     def talk(self):
         """
+        Description
+        -----------
         Returns talk string from character in current location
         If no character in current location is found, "There is no one to talk to." string is returned
         """
@@ -218,13 +224,12 @@ class Player:
         """
         Description
         -----------
-        Asks user to input item name to equip
-        Checks if item name exists in backpack dictionary
-        Returns "You don't have this" string otherwise
-        Checks if item type is equippable
-            Puts item in equipped dictionary
-            If item type is "Weapon" changes strength attribute of player to weapons strength attribute
-            Returns "You have equipped item_name on item_type item slot" string
+        Asks user to input item name to equip\n
+        Checks if item name exists in backpack dictionary\n
+        Returns "You don't have this" string if item name not found in backpack\n
+        Checks if item type is equippable\n         Puts item in equipped dictionary\n
+            If item type is "Weapon" changes strength attribute of player to weapons strength attribute\n
+            Returns "You have equipped item_name on item_type item slot" string\n
         Returns "You can not equip this" string otherwise
         """
         item_name = input("What item do you want to equip?\n>")
