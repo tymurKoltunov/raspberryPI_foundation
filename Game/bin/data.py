@@ -66,3 +66,7 @@ nightshirt_name = 'Nightshirt'
 
 base_win_chance = 25
 one_hit_damage = 0.5
+
+#player
+
+standard_health = 3

@@ -13,7 +13,7 @@ class Player:
     name : str
         name of the player
     health : int
-        health of the player(default 3)
+        health of the player(default is the value of standard_health variable from data.py)
     strength : int
         strength of the player, influences result of a fight\n
         starts with 0
@@ -49,7 +49,7 @@ class Player:
 
     def __init__(self, current_pos: Room, name='defalut'):
         self.name = name
-        self.health = 3
+        self.health = standard_health
         self.strength = 0
         self.location = current_pos
         self.backpack = {}
@@ -294,5 +294,32 @@ class Player:
             return "There is no one here"
 
     def use(self):
-        #TODO consume food for now, other possibilities to be discovered
-        pass
+        """
+        Description
+        -----------
+        Asks user to input an item name to be used
+        Checks if it exists in self.backpack
+            Checks if item type is Food
+                Adds value of heal_amount attribute of the item to self.health value
+                Reduces amount of item charges, deletes item from backpack if charges number become 0
+                Returns "You ate {self.backpack[item].name}. {self.backpack[item].heal_amount} health restored" string
+            Returns "You cant eat this" string if item.type is not Food
+        Returns "You dont have this" string if item does not exist in self.backpack
+        """
+        return_string = ''
+        item = input(f"What do you want to use?\n>")
+        if item in self.backpack:
+            if self.backpack[item].type is "Food":
+                if (self.health + self.backpack[item].heal_amount) > standard_health:
+                    self.health = standard_health
+                else:
+                    self.health += self.backpack[item].heal_amount
+                self.backpack[item].charges -= 1
+                return_string = f"You ate {self.backpack[item].name}. {self.backpack[item].heal_amount} health restored"
+                if self.backpack[item].charges == 0:
+                    del self.backpack[item]
+                return return_string
+            else:
+                return "You cant eat this"
+        else:
+            return "You dont have this"

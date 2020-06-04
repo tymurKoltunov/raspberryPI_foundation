@@ -42,6 +42,6 @@ while True:
         print(result_of_action)
         if "crushes you, puny adventurer" in result_of_action:
             break
-        if ending in result_of_action:
+        if ending_message in result_of_action:
             break
 
